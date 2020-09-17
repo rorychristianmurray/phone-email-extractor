@@ -14,6 +14,13 @@ phoneRegex = re.compiler(r'''(
 
 # create email regex
 
+emailRegex = re.compile(r'''(
+  [a-zA-Z0-9._%+-]+ # username
+  @ # connector
+  [a-zA-Z0-9.-]+ # domain name
+  (\.[a-zA-Z]{2,4}) # dot something
+)''', re.VERBOSE)
+
 # find matches in clipboard text
 
 # copy results to clipboard
