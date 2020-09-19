@@ -10,25 +10,41 @@ import pyperclip, re
 
 dateRegex = re.compile(r'([0-3][0-9])/([0-1][0-9])/([1-2][0-9][0-9][0-9])')
 
-d1 = dateRegex.search('31/01/1999')
-d2 = dateRegex.search('12/12/2999')
-d3 = dateRegex.search('05/09/1716')
-d4 = dateRegex.search('19/50/1999')
-d5 = dateRegex.search('41/01/1999')
-d6 = dateRegex.search('20/01/3000')
-
-print(f'd1 {d1}')
-print(f'd2 {d2}')
-print(f'd3 {d3}')
-print(f'd4 {d4}')
-print(f'd5 {d5}')
-print(f'd6 {d6}')
-
 # read clipboard
 
+text='hello world 31/01/1999 05/09/1716 bin 20/01/3000 31/06/1975 30/06/1975 29/02/1975 14/02/1975'
 
+# text = str(pyperclip.paste())
 
 # store strings in variables
+
+dates = []
+
+for group in dateRegex.findall(text):
+  # check if valid
+  d = group
+  day = group[0]
+  month = group[1]
+  year = group[2]
+  # dates.append(d)
+  # if month 4, 6, 9, 11 - 30 days
+  if month == '04' and day != '31':
+    print(f'd : {d}')
+  elif month == '06' and day != '31':
+    print(f'd : {d}')
+  elif month == '09' and day != '31':
+    print(f'd : {d}')
+  elif month == '11' and day != '31':
+    print(f'd : {d}')
+  elif month == '02':
+    if int(day) < 29:
+      if int(year) %4 == 0:
+        if int(year) % 100 == 0:
+          print(f'd : {d}')
+
+# print(f'dates : {dates}')
+# get returned matches
+# they should be grouped
 
 # check validity
 
